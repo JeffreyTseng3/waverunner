@@ -3,34 +3,54 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p5.js example</title>
-    <!-- <style>
-      * {
-        padding: 0;
-        margin: 0;
-      }
-    
-      canvas {
-        background: grey;
-        display: block;
-        margin: 0 auto;
-      }
-    </style> -->
+    <title>Wave Runner</title>
 
     <script src="../p5.min.js"></script>
     <script src="../addons/p5.dom.min.js"></script>
     <script src="../addons/p5.sound.min.js"></script>
     <script src="land.js"></script>
     <script src="hero.js"></script>
+    <script src="platform.js"></script>
+    <script src="create_platforms.js"></script>
+    <script src="music_control.js"></script>
   </head>
 
   <body>
-      <!-- <canvas id="myCanvas" width="1200" height="600"></canvas> -->
+      
       <script>
-        // let canvas = document.getElementById("myCanvas");
-        // let ctx = canvas.getContext("2d");
+        let maxVal;
+        let averageWave;
+        let song;
+        let volumeArray = [];
+        let waveYArray = [];
+        let platforms = [];
+        let wavesArray
+
+        function setup() {
+          // createCanvas(400, 500);
+          createCanvas(1200, 500);
+          song = loadSound('escape.mp3', loaded);
+          amp = new p5.Amplitude();
+          hero = new Hero();
+          frameRate(30); // Attempt to refresh at starting FPS
+          createPlatforms();
+
+        }
+
+        function loaded() {
+          console.log('loaded');
+          button = createButton('play');
+          button.mousePressed(toggle);
+        }
 
 
+        function draw() {
+            background(0);
+            drawWaves();
+            hero.move();
+            hero.display();
+            // startingPlatform.drawPlatform();
+          }
 
 
       </script>
