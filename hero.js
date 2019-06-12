@@ -1,11 +1,11 @@
 class Hero {
     constructor() {
         this.x = 100;
-        this.y = 100;
+        this.y = 50;
         this.length = 30;
         this.speed = 1;
         this.dy = 3;
-        this.calcAverage = this.calcAverage.bind(this);
+        // this.calcAverage = this.calcAverage.bind(this);
         this.calcMax = this.calcMax.bind(this);
     }
 
@@ -15,18 +15,23 @@ class Hero {
         } else {
             wavesArray = [];
         }
-       
-       averageWave = this.calcAverage(wavesArray);
-       maxVal = this.calcMax(wavesArray);
 
-        // if (this.y + this.length < averageWave) {
-        if (this.y + this.length < maxVal ) {
+        maxVal = this.calcMax(wavesArray);
+
+        if (this.y + this.length > platforms[0].y) {
+            console.log('hello');
+        } else {
             this.y += this.dy;
-        }  else if (this.y + this.length > waveYArray[this.x]) {
-            // console.log('doom');
-            // this.dy = 0;
-
         }
+
+        // if (this.y + this.length < maxVal ) {
+        //     this.y += this.dy;
+        // }  else if (this.y + this.length > waveYArray[this.x]) {
+        // //   console.log('doom');
+        // } else if (this.y + this.length > platforms[0].y) {
+        //     // this.y += dy;
+        //     console.log('stand');
+        // }
     }
 
     display() {
@@ -43,18 +48,17 @@ class Hero {
         return max;
     }
 
-    calcAverage(wavesArray) {
-        let total = 0;
-        for (let i = 0; i < wavesArray.length; i++) {
-            total += wavesArray[i];
-        }
-        return total / wavesArray.length;
-    }
+    // calcAverage(wavesArray) {
+    //     let total = 0;
+    //     for (let i = 0; i < wavesArray.length; i++) {
+    //         total += wavesArray[i];
+    //     }
+    //     return total / wavesArray.length;
+    // }
 }
 
-function keyPressed() {
-    hero.y -= 100;
-}
+
+
 
 
 

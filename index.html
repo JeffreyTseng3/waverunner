@@ -12,7 +12,8 @@
     <script src="hero.js"></script>
     <script src="platform.js"></script>
     <script src="create_platforms.js"></script>
-    <script src="music_control.js"></script>
+    <script src="music_controls.js"></script>
+    <script src="hero_controls.js"></script>
   </head>
 
   <body>
@@ -32,7 +33,7 @@
           song = loadSound('escape.mp3', loaded);
           amp = new p5.Amplitude();
           hero = new Hero();
-          frameRate(30); // Attempt to refresh at starting FPS
+          frameRate(30); 
           createPlatforms();
 
         }
@@ -50,6 +51,7 @@
             hero.move();
             hero.display();
             // startingPlatform.drawPlatform();
+            platforms[0].drawPlatform();
           }
 
 
