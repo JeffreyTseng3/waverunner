@@ -10,6 +10,7 @@ function drawWaves() {
 
   for (let i = 0; i < volumeArray.length; i++) {
     waveY = map(volumeArray[i], 0, 1, height * 0.9, 0);
+  
     // vertex(i*3, waveY); // draws waves
     // line(i , height, i, waveY);
     seekLinePos = i * 3;
