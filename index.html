@@ -25,16 +25,20 @@
         let volumeArray = [];
         let waveYArray = [];
         let platforms = [];
-        let wavesArray
-
+        let wavesArray;
+        let seekLinePos;
         function setup() {
           // createCanvas(400, 500);
-          createCanvas(1200, 500);
+          createCanvas(1200, 700);
           song = loadSound('escape.mp3', loaded);
           amp = new p5.Amplitude();
           hero = new Hero();
           frameRate(30); 
           createPlatforms();
+
+          // for (let i = 0; i < 350; i++) {
+          //   volumeArray.push(0);
+          // }
 
         }
 
@@ -46,12 +50,17 @@
 
 
         function draw() {
-            background(0);
-            drawWaves();
-            hero.move();
-            hero.display();
-            // startingPlatform.drawPlatform();
-            platforms[0].drawPlatform();
+          background(0);
+          drawWaves();
+          hero.move();
+          hero.display();
+          heroControl();
+          
+          platforms.forEach(platform => platform.drawPlatform());
+          platforms.forEach(platform => platform.movePlatform());
+          platforms[0].displayPlatform('first');
+          platforms.forEach(platform => platform.displayPlatform());
+          // platforms = rotatePlatforms(platforms);
           }
 
 

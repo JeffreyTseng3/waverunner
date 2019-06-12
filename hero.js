@@ -4,7 +4,7 @@ class Hero {
         this.y = 50;
         this.length = 30;
         this.speed = 1;
-        this.dy = 3;
+        this.dy = 0;
         // this.calcAverage = this.calcAverage.bind(this);
         this.calcMax = this.calcMax.bind(this);
     }
@@ -19,10 +19,16 @@ class Hero {
         maxVal = this.calcMax(wavesArray);
 
         if (this.y + this.length > platforms[0].y) {
-            console.log('hello');
+            // console.log('doom');
         } else {
+            this.dy += 1;
             this.y += this.dy;
         }
+
+
+
+
+
 
         // if (this.y + this.length < maxVal ) {
         //     this.y += this.dy;

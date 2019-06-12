@@ -12,6 +12,7 @@ function drawWaves() {
     waveY = map(volumeArray[i], 0, 1, height * 0.9, 0);
     // vertex(i*3, waveY); // draws waves
     // line(i , height, i, waveY);
+    seekLinePos = i * 3;
     line(i * 3, height * 0.9, i*3, waveY);
     // line(0,640,i*3,640); // draws ground
   }
