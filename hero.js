@@ -5,8 +5,9 @@ class Hero {
         this.length = 30;
         this.speed = 1;
         this.dy = 0;
-        // this.calcAverage = this.calcAverage.bind(this);
-        this.calcMax = this.calcMax.bind(this);
+
+        this.checkGrounded = this.checkGrounded.bind(this);
+        this.grounded = false;
     }
 
     move() {
@@ -16,28 +17,43 @@ class Hero {
             wavesArray = [];
         }
 
-        maxVal = this.calcMax(wavesArray);
+        this.checkGrounded(this.x, this.y + this.length);
 
-        if (this.y + this.length > platforms[0].y) {
-            // console.log('doom');
+        if (this.grounded) {
+            console.log('doom');
+            this.dy = 0; 
         } else {
             this.dy += 1;
             this.y += this.dy;
         }
 
+    }
 
+    checkGrounded(heroX, heroY) {
+        let belowPlatform;
 
+        for (let i = 0; i < platforms.length; i++) {
+            let platform = platforms[i];
+            
+            if (platform.x < heroX + this.length && platform.x + 100 > heroX) {
+                belowPlatform = platform;
+     
+            }
+        }
+        if (belowPlatform) {
+            let belowYRange = [belowPlatform.y, belowPlatform.y + 20]
+            if (heroY >= belowYRange[0] && heroY <= belowYRange[1]) {
+                this.grounded = true;
+            } else {
+                this.grounded = false;
+            }
+        } else {
+            this.grounded = false;
+        }
+       
 
+       
 
-
-        // if (this.y + this.length < maxVal ) {
-        //     this.y += this.dy;
-        // }  else if (this.y + this.length > waveYArray[this.x]) {
-        // //   console.log('doom');
-        // } else if (this.y + this.length > platforms[0].y) {
-        //     // this.y += dy;
-        //     console.log('stand');
-        // }
     }
 
     display() {

@@ -19,8 +19,7 @@
   <body>
       
       <script>
-        let maxVal;
-        let averageWave;
+
         let song;
         let volumeArray = [];
         let waveYArray = [];
@@ -46,6 +45,7 @@
           console.log('loaded');
           button = createButton('play');
           button.mousePressed(toggle);
+          
         }
 
 
@@ -60,8 +60,11 @@
           platforms.forEach(platform => platform.movePlatform());
           platforms[0].displayPlatform('first');
           platforms.forEach(platform => platform.displayPlatform());
-          // platforms = rotatePlatforms(platforms);
+          if (platforms[0].x + 100 < 0 ) {
+            platforms = rotatePlatforms(platforms);
           }
+          
+        }
 
 
       </script>

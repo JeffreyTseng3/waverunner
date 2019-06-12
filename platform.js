@@ -1,14 +1,3 @@
-// let xStart = 100;
-// let yStart = 400;
-
-// let rectX = 70;
-// let rectY = 130;
-
-// let fr = 30;
-
-
-
-
 class Platform {
     constructor(x, y, fr) {
         this.x = x;
@@ -18,7 +7,6 @@ class Platform {
     }
 
     drawPlatform() {
-        // this.x = this.x -= 5
         stroke(0);
         rect(this.x, this.y, 100, 20);
     }
