@@ -10,6 +10,7 @@ class Platform {
     // sets up each platform without form or shape
     drawPlatform() {
         stroke(0);
+        strokeWeight(1);
         rect(this.x, this.y, 100, 20);
     }
 
@@ -27,9 +28,23 @@ class Platform {
     displayPlatform(firstPlatform) {
 
          if (firstPlatform === 'first') {
-            stroke(60, 179, 113)
-            fill(60, 179, 113);
-            rect(this.x, this.y, 100, 20);  
+             stroke(60, 179, 113); 
+             noFill(); 
+             strokeWeight(3);  
+             rect(this.x, this.y, 100, 20);  
+
+             let wide;
+             if (seekLinePos - this.x < 100 && seekLinePos - this.x > 0) {
+                 wide = seekLinePos - this.x;
+                 
+
+                } else {
+                    wide = 100;
+                    
+                }
+                rect(this.x, this.y, wide, 20);
+                fill(60, 179, 113);
+
         } else if (this.x < seekLinePos) {
             stroke(60, 179, 113)
             fill(60, 179, 113);

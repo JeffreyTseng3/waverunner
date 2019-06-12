@@ -5,9 +5,10 @@ function drawWaves() {
   waveYArray.push(map(vol, 0,1,height * 0.9, 0));
 
   stroke(255, 255, 0);
+  strokeWeight(1);
   noFill();
-  beginShape();
 
+  beginShape();
   for (let i = 0; i < volumeArray.length; i++) {
     waveY = map(volumeArray[i], 0, 1, height * 0.9, 0);
   
@@ -44,4 +45,9 @@ function drawSoundLine() {
   // line(volumeArray.length, 0, volumeArray.length , height)
 }
  
+function darkSide() {
+  stroke(0);
+  fill(0);
+  rect(seekLinePos + 7, 0, width - seekLinePos, 700);
+}
 

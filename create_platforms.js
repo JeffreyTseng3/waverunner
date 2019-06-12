@@ -1,3 +1,4 @@
+// this xpos allows for offscreen x coordinates
 let newPlatformXPos = 250;
 
 function createPlatforms() {
@@ -20,7 +21,7 @@ function createPlatforms() {
 function rotatePlatforms(platforms) {
     let latterSlice = platforms.slice(1, platforms.length)
     let prevSlice = platforms.slice(0, 1)[0];
-    console.log(prevSlice);
+    // console.log(prevSlice);
     
     prevSlice.x += 1200;
         let newPlatforms =latterSlice.concat([prevSlice]);

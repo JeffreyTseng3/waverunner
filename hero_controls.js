@@ -1,8 +1,13 @@
 
 function keyTyped() {
+
     if (key === ' ') {
-        hero.y -= 100;
-        hero.dy = 0;
+        if (currentJump < jumpLimit) {
+            hero.y -= 100;
+            hero.dy = 0;
+            currentJump += 1;
+        }
+      
     }
 }
 

@@ -21,11 +21,8 @@ class Hero {
 
         this.checkGrounded(this.x, this.y + this.length);
 
-
-     
-
         if (this.grounded) {
-            console.log('doom');
+  
             this.dy = 0; 
             if (song.isPlaying() && seekLinePos === 1050)   {
                 this.x -= this.dx;
@@ -56,25 +53,36 @@ class Hero {
         wavesArray = waveYArray.slice(heroX/3, heroX/3 + 30);
         
         let average = this.calcAverage(wavesArray);
-        // let max = this.calcMax(wavesArray);
+
 
         if (hero.y + this.length > average && hero.y + this.length < average + 50 ) {
-        // if (hero.y + this.length > max && hero.y + this.length < max + 50 ) {
+            // game over
+            
             this.grounded = true;
+            currentJump = jumpLimit;
         } else if  (belowPlatform) {
-            let belowYRange = [belowPlatform.y, belowPlatform.y + 20]
+            // on platform
+            let belowYRange = [belowPlatform.y, belowPlatform.y + 30]
             if (heroY >= belowYRange[0] && heroY <= belowYRange[1]) {
+                // grounded if on platform
                 this.grounded = true;
+                currentJump = 0;
+                this.y = belowPlatform.y - 30;
             } else {
+                // if off the platform, then not grounded
                 this.grounded = false;
             }
         } else {
+            // not grounded if not on the music 
             this.grounded = false;
         }
        
     }
 
     display() {
+        strokeWeight(1);
+        stroke(0, 191, 255);
+        noFill();
         square(this.x, this.y, this.length);
     }
 
