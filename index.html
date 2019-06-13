@@ -17,6 +17,9 @@
     <script src="Ring.js"></script>
     <script src="create_rings.js"></script>
     <script src="load_sprites.js"></script>
+    <script src="Ship.js"></script>
+    <script src="create_ships.js"></script>
+    <script src="score_count.js"></script>
   </head>
 
   <body>
@@ -28,6 +31,8 @@
         let waveYArray = [];
         let platforms = [];
         let rings = [];
+        let ships = [];
+
 
         let wavesArray;
         let seekLinePos;
@@ -50,6 +55,7 @@
           frameRate(30); 
           createPlatforms();
           createRings();
+          createShips();
           // for (let i = 0; i < 350; i++) {
           //   volumeArray.push(0);
           // }
@@ -70,11 +76,15 @@
           background(0);
           drawWaves();
           
+          ships.forEach(ship => ship.drawShip());
+          ships.forEach(ship => ship.moveShip());
+          if (ships[0].x + 100 < 0) {
+            ships = rotateShips(ships);
+          }
           
 
           platforms.forEach(platform => platform.drawPlatform());
           platforms.forEach(platform => platform.movePlatform());
-          platforms[0].displayPlatform('first');
           platforms.forEach(platform => platform.displayPlatform());
           if (platforms[0].x + 100 < 0 ) {
             platforms = rotatePlatforms(platforms);
@@ -86,12 +96,16 @@
           if (rings[0].x + 30 < 0) {
             rings = rotateRings(rings);
           }
+
           darkSide();
           platforms[0].displayPlatform('first');
 
           hero.move();
           hero.display();
           heroControl();
+          
+
+          drawScore();
         }
 
 

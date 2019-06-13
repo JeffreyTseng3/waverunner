@@ -9,7 +9,9 @@ class Hero {
         this.checkGrounded = this.checkGrounded.bind(this);
         this.grounded = false;
         this.calcAverage = this.calcAverage.bind(this);
-        this.calcMax = this.calcMax.bind(this);
+        // this.calcMax = this.calcMax.bind(this);
+
+
         this.jumpAnimateIndex = 0;
         this.runAnimateIndex = 0;
         this.run = [sonicRun1, sonicRun2, sonicRun3, sonicRun4];
@@ -22,9 +24,14 @@ class Hero {
         this.lastDir = 'right'; // used in herocontrols
         this.alive = true;
         this.lossIndex = 0;
+
+
+        this.checkRing = this.checkRing.bind(this);
+        this.ringsCollected = 0;
     }
 
     move() {
+        this.checkRing(this.x, this.y);
         if (hero.alive) {
             if (waveYArray[this.x] !== undefined) {
                 wavesArray = waveYArray.slice(this.x - 15, this.x + 15);
@@ -33,9 +40,8 @@ class Hero {
             }
     
             this.checkGrounded(this.x, this.y + this.length);
-    
+            
             if (this.grounded) {
-      
                 this.dy = 0; 
                 if (song.isPlaying() && seekLinePos === 1050)   {
                     this.x -= this.dx;
@@ -45,7 +51,6 @@ class Hero {
                 this.y += this.dy;
             }
         } else { // loss
-            
             this.y += this.dy;
         }
     }
@@ -70,8 +75,6 @@ class Hero {
                 
                 this.alive = false;
     
-
-                // this.grounded = false;
                 // currentJump = jumpLimit;
             } else if  (belowPlatform) {
                 // on platform
@@ -106,7 +109,6 @@ class Hero {
         noFill();
 
         // lose if touch wall
-        
         if (this.x < 0) {
             this.alive = false;
         }
@@ -151,15 +153,32 @@ class Hero {
         // square(this.x, this.y, this.length);
     }
 
-    calcMax(wavesArray) {
-        let max = wavesArray[0];
-        for (let i = 0; i < wavesArray.length; i++) {
-            if (wavesArray[i] > max) {
-                max = wavesArray[i];
+
+    checkRing(heroX, heroY) {
+        let columnRing;
+
+        for (let i = 0; i < rings.length; i++) {
+            let ring = rings[i];
+
+            if (ring.x - 5 < heroX + this.length && ring.x + 30 > heroX) { // 16 is pixel width
+                columnRing = ring;
             }
         }
-        return max;
+
+        if (columnRing) {
+
+            if (hero.y + this.length + 10 > columnRing.y && hero.y + this.length < columnRing.y + 30) {
+                columnRing.collected = true;
+                columnRing = false;
+            }
+        }
+        
     }
+    
+    checkShip() {
+
+    }
+
 
     calcAverage(wavesArray) {
         let total = 0;
@@ -168,6 +187,9 @@ class Hero {
         }
         return total / wavesArray.length;
     }
+
+
+
 }
 
 

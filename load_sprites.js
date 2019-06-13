@@ -25,4 +25,15 @@ function loadSprites() {
 
     loss1 = loadImage('sprites/loss/loss1.png')
     loss2 = loadImage('sprites/loss/loss2.png')
+
+    ring1 = loadImage('sprites/ring/ring1.png')
+    ring2 = loadImage('sprites/ring/ring2.png')
+    ring3 = loadImage('sprites/ring/ring3.png')
+    ring4 = loadImage('sprites/ring/ring4.png')
+    ring5 = loadImage('sprites/ring/ring5.png')
+
+    ship1 = loadImage('sprites/enemies/ship1.png')
+    ship2 = loadImage('sprites/enemies/ship2.png')
+    ship3 = loadImage('sprites/enemies/ship3.png')
+
 }
