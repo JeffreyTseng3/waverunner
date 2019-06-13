@@ -10,6 +10,11 @@ function drawScore() {
         }
     }
 
+    
+
+
+
+
     let score = 'score: ' + ringsSum.toString();
     text(score, width - 70, 100);
     fill(255,255,255);

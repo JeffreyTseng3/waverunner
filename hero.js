@@ -27,11 +27,16 @@ class Hero {
 
 
         this.checkRing = this.checkRing.bind(this);
+        this.checkShip = this.checkShip.bind(this);
         this.ringsCollected = 0;
+        this.shipsDestroyed = 0;
+
+        this.enemyJump = 0;
     }
 
     move() {
         this.checkRing(this.x, this.y);
+        this.checkShip(this.x, this.y);
         if (hero.alive) {
             if (waveYArray[this.x] !== undefined) {
                 wavesArray = waveYArray.slice(this.x - 15, this.x + 15);
@@ -171,12 +176,30 @@ class Hero {
                 columnRing.collected = true;
                 columnRing = false;
             }
-        }
-        
+        } 
     }
     
-    checkShip() {
+    checkShip(heroX, heroY) {
+        let columnShip;
 
+        for (let i = 0; i < ships.length; i++) {
+            let ship = ships[i];
+
+            if (ship.x - 2 < heroX + this.length && ship.x + 62 > heroX) { // 16 is pixel width
+                columnShip = ship;
+            }
+        }
+
+        if (columnShip && columnShip.destroyed === false) {
+
+            if (hero.y + this.length + 2 > columnShip.y && hero.y + this.length < columnShip.y + 35) {
+                columnShip.destroyed = true;
+                this.y -= 30;
+                this.dy = -10;
+            
+                
+            }
+        } 
     }
 
 

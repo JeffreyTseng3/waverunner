@@ -8,11 +8,14 @@ class Ship {
         this.dy = 1;
         this.ships = [ship1, ship1, ship2, ship2, ship1, ship1, ship3, ship3];
         this.shipIndex = 0;
+        this.destroyed = false;
     }
 
     drawShip() {
-        image(this.ships[this.shipIndex % 8], this.x, this.y, 90, 50);
-        this.shipIndex += 1;
+        if (this.destroyed === false) {
+            image(this.ships[this.shipIndex % 8], this.x, this.y, 90, 50);
+            this.shipIndex += 1;
+        }
     }
 
     moveShip() {
