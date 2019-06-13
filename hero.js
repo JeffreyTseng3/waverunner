@@ -4,7 +4,7 @@ class Hero {
         this.y = 50;
         this.length = 30;
         this.speed = 1;
-        this.dy = 0;
+        this.dy = 0;;
         this.dx = 3;
         this.checkGrounded = this.checkGrounded.bind(this);
         this.grounded = false;
@@ -28,7 +28,7 @@ class Hero {
                 this.x -= this.dx;
             }
         } else {
-            this.dy += 1;
+            this.dy += 0.7;
             this.y += this.dy;
         }
 
@@ -59,21 +59,25 @@ class Hero {
             // game over
             
             this.grounded = true;
-            currentJump = jumpLimit;
+            // currentJump = jumpLimit;
         } else if  (belowPlatform) {
             // on platform
             let belowYRange = [belowPlatform.y, belowPlatform.y + 30]
             if (heroY >= belowYRange[0] && heroY <= belowYRange[1]) {
                 // grounded if on platform
                 this.grounded = true;
-                currentJump = 0;
+                // currentJump = 0;
                 this.y = belowPlatform.y - 30;
             } else {
                 // if off the platform, then not grounded
+                this.dy += 0.7;
+
                 this.grounded = false;
             }
         } else {
             // not grounded if not on the music 
+            this.dy += 0.7;
+
             this.grounded = false;
         }
        
