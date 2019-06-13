@@ -16,6 +16,7 @@
     <script src="hero_controls.js"></script>
     <script src="Ring.js"></script>
     <script src="create_rings.js"></script>
+    <script src="load_sprites.js"></script>
   </head>
 
   <body>
@@ -30,13 +31,20 @@
 
         let wavesArray;
         let seekLinePos;
-        let jumpLimit = 10; 
+        let jumpLimit = 5; 
         let currentJump = 0;
+
+
+        function preload() {
+          loadSprites();
+        }
 
         function setup() {
           // createCanvas(400, 500);
           createCanvas(1200, 700);
           song = loadSound('escape.mp3', loaded);
+       
+
           amp = new p5.Amplitude();
           hero = new Hero();
           frameRate(30); 
@@ -47,6 +55,8 @@
           // }
 
         }
+
+        
 
         function loaded() {
           console.log('loaded');
@@ -60,6 +70,8 @@
           background(0);
           drawWaves();
           
+          
+
           platforms.forEach(platform => platform.drawPlatform());
           platforms.forEach(platform => platform.movePlatform());
           platforms[0].displayPlatform('first');
