@@ -2,50 +2,45 @@ class Hero {
     constructor() {
         this.x = 100;
         this.y = 50;
-        this.length = 30;
-        this.speed = 1;
         this.dy = 0;;
         this.dx = 3;
-        this.checkGrounded = this.checkGrounded.bind(this);
+        this.length = 30;
+        this.speed = 1;
+        
+        this.alive = true;
         this.grounded = false;
-        this.calcAverage = this.calcAverage.bind(this);
-        // this.calcMax = this.calcMax.bind(this);
-
-
-        this.jumpAnimateIndex = 0;
-        this.runAnimateIndex = 0;
+        this.rightDir = false; 
+        this.leftDir = false; 
+        this.lastDir = 'right'; // used in herocontrols
+        
         this.run = [sonicRun1, sonicRun2, sonicRun3, sonicRun4];
         this.runLeft = [runLeft1, runLeft2, runLeft3, runLeft4];
         this.jump = [jump1, jump2, jump3, jump4, jump5];
         this.jumpLeft = [jumpLeft1, jumpLeft2, jumpLeft3, jumpLeft4, jumpLeft5];
         this.loss = [loss1, loss2];
-        this.rightDir = false; 
-        this.leftDir = false; 
-        this.lastDir = 'right'; // used in herocontrols
-        this.alive = true;
+        
+        this.jumpAnimateIndex = 0;
+        this.runAnimateIndex = 0;
         this.lossIndex = 0;
-
-
-        this.checkRing = this.checkRing.bind(this);
-        this.checkShip = this.checkShip.bind(this);
+        
         this.ringsCollected = 0;
         this.shipsDestroyed = 0;
-
         this.enemyJump = 0;
+
+        this.checkGrounded = this.checkGrounded.bind(this);
+        this.calcAverage = this.calcAverage.bind(this);
+        this.checkRing = this.checkRing.bind(this);
+        this.checkShip = this.checkShip.bind(this);
+        this.checkOutOfBoundary = this.checkOutOfBoundary.bind(this);
     }
 
     move() {
         this.checkRing(this.x, this.y);
         this.checkShip(this.x, this.y);
+        this.checkGrounded(this.x, this.y + this.length);
+        this.checkOutOfBoundary();
+
         if (hero.alive) {
-            if (waveYArray[this.x] !== undefined) {
-                wavesArray = waveYArray.slice(this.x - 15, this.x + 15);
-            } else {
-                wavesArray = [];
-            }
-    
-            this.checkGrounded(this.x, this.y + this.length);
-            
             if (this.grounded) {
                 this.dy = 0; 
                 if (song.isPlaying() && seekLinePos === 1050)   {
@@ -61,63 +56,55 @@ class Hero {
     }
 
     checkGrounded(heroX, heroY) {
-        let belowPlatform;
-
-        for (let i = 0; i < platforms.length; i++) {
-            let platform = platforms[i];
-            
-            if (platform.x < heroX + this.length && platform.x + 100 > heroX) {
-                belowPlatform = platform;
-            }
-        }
-        wavesArray = waveYArray.slice(heroX/3, heroX/3 + 30);
-    
-        let average = this.calcAverage(wavesArray);
 
         if (this.alive) {
-            if (hero.y + this.length > average && hero.y + this.length < average + 50 ) {
-                // game over
-                
+            let averageWaveLossBoundary = this.calcAverage(heroX, heroY);
+            let inRangePlatform;
+            for (let i = 0; i < platforms.length; i++) {
+                let platform = platforms[i];
+
+                if (platform.x < heroX + this.length && platform.x + 100 > heroX) {
+                    inRangePlatform = platform;
+                }
+            }
+
+            if (hero.y + this.length > averageWaveLossBoundary && hero.y + this.length < averageWaveLossBoundary + 50 ) {
+                // game over 
                 this.alive = false;
-    
                 // currentJump = jumpLimit;
-            } else if  (belowPlatform) {
+            } else if (inRangePlatform) { // if inrangeplatform is in line
                 // on platform
-                let belowYRange = [belowPlatform.y, belowPlatform.y + 30]
-                if (heroY >= belowYRange[0] && heroY <= belowYRange[1]) {
+                let inRangePlatformBoundaryY = [inRangePlatform.y, inRangePlatform.y + 30]
+                if (heroY >= inRangePlatformBoundaryY[0] && heroY <= inRangePlatformBoundaryY[1]) {
                     // grounded if on platform
                     this.grounded = true;
                     currentJump = 0;
-                    this.y = belowPlatform.y - 30;
-                
+                    this.y = inRangePlatform.y - 30;
                 } else {
                     // if off the platform, then not grounded
                     this.dy += 0.7;
-
                     this.grounded = false;
                 }
-            } else {
+        } else { // else not alive
                 // not grounded if not on the music 
                 this.dy += 0.7;
-
                 this.grounded = false;
             }
         }
        
     }
 
+    checkOutOfBoundary() {
+        if (this.x < 0) {
+            this.alive = false;
+        }
+    }
 
    
     display() {
         strokeWeight(1);
         stroke(0, 191, 255);
         noFill();
-
-        // lose if touch wall
-        if (this.x < 0) {
-            this.alive = false;
-        }
-        
 
         if (this.alive) {
             if (this.grounded && this.rightDir) {
@@ -151,10 +138,8 @@ class Hero {
                 if (this.lossIndex !== 0) {
                     this.grounded = false;
                 }
-
             }
         }
-
         // square(this.x, this.y, this.length);
     }
 
@@ -171,7 +156,6 @@ class Hero {
         }
 
         if (columnRing) {
-
             if (hero.y + this.length + 10 > columnRing.y && hero.y + this.length < columnRing.y + 30) {
                 columnRing.collected = true;
                 columnRing = false;
@@ -185,32 +169,39 @@ class Hero {
         for (let i = 0; i < ships.length; i++) {
             let ship = ships[i];
 
-            if (ship.x - 2 < heroX + this.length && ship.x + 62 > heroX) { // 16 is pixel width
+            if (ship.x + 5 < heroX + this.length && ship.x + 55 > heroX) { // 16 is pixel width
                 columnShip = ship;
             }
         }
 
         if (columnShip && columnShip.destroyed === false) {
 
-            if (hero.y + this.length + 2 > columnShip.y && hero.y + this.length < columnShip.y + 35) {
+            if (hero.y + this.length + 2 > columnShip.y && hero.y + this.length < columnShip.y + 60) {
                 columnShip.destroyed = true;
                 this.y -= 30;
-                this.dy = -10;
-            
-                
+                this.dy = -10;     
             }
         } 
     }
 
 
-    calcAverage(wavesArray) {
+    calcAverage(heroX, heroY) {
         let total = 0;
+
+        // sets up array for calculating average
+        if (waveYArray[this.x] !== undefined) {
+            wavesArray = waveYArray.slice(this.x - 15, this.x + 15);
+        } else {
+            wavesArray = [];
+        }
+
+        wavesArray = waveYArray.slice(heroX / 3, heroX / 3 + 30);
+        
         for (let i = 0; i < wavesArray.length; i++) {
             total += wavesArray[i];
         }
         return total / wavesArray.length;
     }
-
 
 
 }

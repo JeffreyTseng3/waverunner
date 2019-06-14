@@ -12,8 +12,7 @@ function keyTyped() {
     }
 }
 
-
-function heroControl() {
+function heroCommands() {
     if (hero.alive) {
         if (keyIsDown(RIGHT_ARROW)) {
             hero.x += 5;
@@ -34,10 +33,8 @@ function heroControl() {
 
         }
 
-
         if (keyIsDown(DOWN_ARROW)) {
             hero.y += 5;
         }
     }
-
 }

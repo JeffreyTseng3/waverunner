@@ -11,7 +11,6 @@ function drawWaves() {
   beginShape();
   for (let i = 0; i < volumeArray.length; i++) {
     waveY = map(volumeArray[i], 0, 1, height * 0.9, 0);
-  
     // vertex(i*3, waveY); // draws waves
     // line(i , height, i, waveY);
     seekLinePos = i * 3;
@@ -19,14 +18,11 @@ function drawWaves() {
     // line(0,640,i*3,640); // draws ground
   }
   endShape();
-
   splicePrevValues();
   drawSoundLine();
 }
 
 function splicePrevValues() {
-
-  
   if (waveYArray.length * 3 > width - 150) { // width - 150 prevents seeker line from going to end of page
   // if (waveYArray.length > width - 150) { // width - 150 prevents seeker line from going to end of page
     waveYArray = waveYArray.slice(1, waveYArray.length);
@@ -48,6 +44,6 @@ function drawSoundLine() {
 function darkSide() {
   stroke(0);
   fill(0);
-  rect(seekLinePos + 7, 0, width - seekLinePos, 700);
+  rect(seekLinePos + 4, 0, width - seekLinePos, 700);
 }
 
