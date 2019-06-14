@@ -8,6 +8,7 @@ class Ring {
         this.ringIndex = 0;
         this.diam = 30;
         this.collected = false;
+        this.musicIndex = 0;
     }
 
     drawRing() {
@@ -22,6 +23,13 @@ class Ring {
     moveRing() {
         if (song.isPlaying() && seekLinePos === 1050) {
             this.x -= this.dx;
+        }
+    }
+
+    playMusicRing() {
+        if (this.collected === true && this.musicIndex === 0) {
+            ringWav.play();
+            this.musicIndex += 1;
         }
     }
 

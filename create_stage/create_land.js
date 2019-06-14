@@ -2,7 +2,7 @@
 function drawWaves() {
   let vol = amp.getLevel();
   volumeArray.push(vol);
-  waveYArray.push(map(vol, 0,1,height * 0.9, 0));
+  waveYArray.push(map(vol, 0, 1,height * 0.9, 0)); // adjust third value to affect height death.
 
   stroke(255, 255, 0);
   strokeWeight(1);
@@ -10,7 +10,7 @@ function drawWaves() {
 
   beginShape();
   for (let i = 0; i < volumeArray.length; i++) {
-    waveY = map(volumeArray[i], 0, 1, height * 0.9, 0);
+    waveY = map(volumeArray[i], 0, 1.2, height * 0.9, 0); // adjust third value according to volume amp
     // vertex(i*3, waveY); // draws waves
     // line(i , height, i, waveY);
     seekLinePos = i * 3;

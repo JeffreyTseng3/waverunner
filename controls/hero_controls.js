@@ -6,7 +6,7 @@ function keyTyped() {
                     hero.y -= 10;
                     hero.dy = -15;
                     currentJump += 1;
-                
+                    jumpWav.play();
                 }
             }
     }

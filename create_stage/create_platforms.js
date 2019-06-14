@@ -9,7 +9,7 @@ function createPlatforms() {
         } else {
             let x = newPlatformXPos;
             let y = Math.random() * 400 + 50;
-            newPlatformXPos += 200;
+            newPlatformXPos += 250;
             let fr = 30;
             let newPlatform = new Platform(x, y, fr)
           
@@ -23,7 +23,7 @@ function rotatePlatforms(platforms) {
     let prevSlice = platforms.slice(0, 1)[0];
     // console.log(prevSlice);
     
-    prevSlice.x += 1200;
+    prevSlice.x += 1500;
         let newPlatforms =latterSlice.concat([prevSlice]);
 
         return newPlatforms;

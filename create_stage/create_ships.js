@@ -4,7 +4,7 @@ function createShips() {
     for(let i = 0; i < 24; i++) {
         let x = newShipXPos;
         let y = Math.random() * 400 + 50;
-        newShipXPos += 400;
+        newShipXPos += 300;
         let newShip = new Ship(x, y);
         ships.push(newShip);
     }

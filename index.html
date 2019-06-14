@@ -12,7 +12,7 @@
     <script src="classes/Hero.js"></script>
     <script src="classes/Platform.js"></script>
     <script src="classes/Ship.js"></script>
-    <script src="classes/Truck.js"></script>
+    <script src="classes/Eggman.js"></script>
     <script src="classes/Ring.js"></script>
     
     <script src="create_stage/create_land.js"></script>
@@ -38,6 +38,7 @@
             let platforms = [];
             let rings = [];
             let ships = [];
+            let truck;
             let wavesArray;
             let seekLinePos;
             let jumpLimit = 5;
@@ -45,11 +46,16 @@
         
         function preload() {
           loadSprites();
+          ringWav = loadSound('music_files/ring_collected.wav');
+          enemyWav = loadSound('music_files/enemy_destroyed.wav');
+          jumpWav = loadSound('music_files/jump_long.wav');
         }
 
         function setup() {
-          createCanvas(1200, 700);
+          createCanvas(1200, 800);
+  
           song = loadSound('music_files/escape.mp3', loaded);
+          
           amp = new p5.Amplitude();
           hero = new Hero();
           frameRate(30); 
@@ -73,7 +79,8 @@
           spawnShips();
           spawnPlatforms();
           spawnRings();
-
+          spawnEggman();
+  
           darkSide();
           platforms[0].displayPlatform('first');
           

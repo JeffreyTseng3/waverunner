@@ -36,5 +36,7 @@ function loadSprites() {
     ship2 = loadImage('sprites/enemies/ship2.png');
     ship3 = loadImage('sprites/enemies/ship3.png');
 
-    truck = loadImage('sprites/truck/truck.png');
+    eggmanBody1 = loadImage('sprites/eggman/eggman_body/body1.png');
+    eggmanBody2 = loadImage('sprites/eggman/eggman_body/body2.png');
+    eggmanBody3 = loadImage('sprites/eggman/eggman_body/body3.png');
 }

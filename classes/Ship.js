@@ -9,6 +9,7 @@ class Ship {
         this.ships = [ship1, ship1, ship2, ship2, ship1, ship1, ship3, ship3];
         this.shipIndex = 0;
         this.destroyed = false;
+        this.musicIndex = 0;
     }
 
     drawShip() {
@@ -35,6 +36,13 @@ class Ship {
     moveShip() {
         if (song.isPlaying() && seekLinePos === 1050) {
             this.x -= this.dx;
+        }
+    }
+
+    playMusicShip() {
+        if (this.destroyed === true && this.musicIndex === 0) {
+            enemyWav.play();
+            this.musicIndex += 1;
         }
     }
 }

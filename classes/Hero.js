@@ -35,8 +35,12 @@ class Hero {
     }
 
     move() {
-        this.checkRing(this.x, this.y);
-        this.checkShip(this.x, this.y);
+        if (this.alive) {
+
+            this.checkRing(this.x, this.y);
+            this.checkShip(this.x, this.y);
+            
+        }
         this.checkGrounded(this.x, this.y + this.length);
         this.checkOutOfBoundary();
 
@@ -169,7 +173,7 @@ class Hero {
         for (let i = 0; i < ships.length; i++) {
             let ship = ships[i];
 
-            if (ship.x + 5 < heroX + this.length && ship.x + 55 > heroX) { // 16 is pixel width
+            if (ship.x + 5 < heroX + this.length && ship.x + 65 > heroX) { // 16 is pixel width
                 columnShip = ship;
             }
         }

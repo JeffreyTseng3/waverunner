@@ -1,10 +1,10 @@
-let newRingXPos = 400;
+let newRingXPos = 425;
 
 function createRings() {
     for (let i = 0; i < 24; i++) {
         let x = newRingXPos;
         let y = Math.random() * 400 + 50;
-        newRingXPos += 200;
+        newRingXPos += 250;
         let newRing = new Ring(x, y);
         rings.push(newRing);
     }
