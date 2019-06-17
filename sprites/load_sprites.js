@@ -39,4 +39,9 @@ function loadSprites() {
     eggmanBody1 = loadImage('sprites/eggman/eggman_body/body1.png');
     eggmanBody2 = loadImage('sprites/eggman/eggman_body/body2.png');
     eggmanBody3 = loadImage('sprites/eggman/eggman_body/body3.png');
+
+    eggmanThrust1 = loadImage('sprites/eggman/eggman_thrust/thrust1.png')
+    eggmanThrust2 = loadImage('sprites/eggman/eggman_thrust/thrust2.png')
+    eggmanThrust3 = loadImage('sprites/eggman/eggman_thrust/thrust3.png')
+    eggmanThrust4 = loadImage('sprites/eggman/eggman_thrust/thrust4.png')
 }

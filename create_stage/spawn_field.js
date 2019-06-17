@@ -27,6 +27,7 @@ function spawnRings() {
 }
 
 function spawnEggman() {
-    eggman = new Eggman();
+    
     eggman.drawEggmanBody();
+    eggman.drawThrust();
 }
