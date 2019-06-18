@@ -40,8 +40,42 @@ function loadSprites() {
     eggmanBody2 = loadImage('sprites/eggman/eggman_body/body2.png');
     eggmanBody3 = loadImage('sprites/eggman/eggman_body/body3.png');
 
-    eggmanThrust1 = loadImage('sprites/eggman/eggman_thrust/thrust1.png')
-    eggmanThrust2 = loadImage('sprites/eggman/eggman_thrust/thrust2.png')
-    eggmanThrust3 = loadImage('sprites/eggman/eggman_thrust/thrust3.png')
-    eggmanThrust4 = loadImage('sprites/eggman/eggman_thrust/thrust4.png')
+    eggmanBodyRight1 = loadImage('sprites/eggman/eggman_body/body1right.png');
+    eggmanBodyRight2 = loadImage('sprites/eggman/eggman_body/body2right.png');
+    eggmanBodyRight3 = loadImage('sprites/eggman/eggman_body/body3right.png');
+
+    eggmanThrust1 = loadImage('sprites/eggman/eggman_thrust/thrust1.png');
+    eggmanThrust2 = loadImage('sprites/eggman/eggman_thrust/thrust2.png');
+    eggmanThrust3 = loadImage('sprites/eggman/eggman_thrust/thrust3.png');
+    eggmanThrust4 = loadImage('sprites/eggman/eggman_thrust/thrust4.png');
+
+
+    eggmanThrustRight1 = loadImage('sprites/eggman/eggman_thrust/thrust1right.png');
+    eggmanThrustRight2 = loadImage('sprites/eggman/eggman_thrust/thrust2right.png');
+    eggmanThrustRight3 = loadImage('sprites/eggman/eggman_thrust/thrust3right.png');
+    eggmanThrustRight4 = loadImage('sprites/eggman/eggman_thrust/thrust4right.png');
+
+    eggmanBomb1 = loadImage('sprites/eggman/eggman_bomb/bomb1.png');
+    eggmanBomb2 = loadImage('sprites/eggman/eggman_bomb/bomb2.png');
+    eggmanBomb3 = loadImage('sprites/eggman/eggman_bomb/bomb3.png');
+    eggmanBomb4 = loadImage('sprites/eggman/eggman_bomb/bomb4.png');
+    eggmanBomb5 = loadImage('sprites/eggman/eggman_bomb/bomb5.png');
+    eggmanBomb6 = loadImage('sprites/eggman/eggman_bomb/bomb6.png');
+
+    eggmanBombThrust1 = loadImage('sprites/eggman/eggman_bomb/bomb_thrust/bomb_thrust1.png');
+    eggmanBombThrust2 = loadImage('sprites/eggman/eggman_bomb/bomb_thrust/bomb_thrust2.png');
+    eggmanBombThrust3 = loadImage('sprites/eggman/eggman_bomb/bomb_thrust/bomb_thrust3.png');
+    eggmanBombThrust4 = loadImage('sprites/eggman/eggman_bomb/bomb_thrust/bomb_thrust4.png');
+
+    eggmanBomb1 = loadImage('sprites/eggman/eggman_bomb_left/bomb1.png');
+    eggmanBomb2 = loadImage('sprites/eggman/eggman_bomb_left/bomb2.png');
+    eggmanBomb3 = loadImage('sprites/eggman/eggman_bomb_left/bomb3.png');
+    eggmanBomb4 = loadImage('sprites/eggman/eggman_bomb_left/bomb4.png');
+    eggmanBomb5 = loadImage('sprites/eggman/eggman_bomb_left/bomb5.png');
+    eggmanBomb6 = loadImage('sprites/eggman/eggman_bomb_left/bomb6.png');
+
+    eggmanBombThrust1 = loadImage('sprites/eggman/eggman_bomb_left/bomb_thrust/bomb_thrust1.png');
+    eggmanBombThrust2 = loadImage('sprites/eggman/eggman_bomb_left/bomb_thrust/bomb_thrust2.png');
+    eggmanBombThrust3 = loadImage('sprites/eggman/eggman_bomb_left/bomb_thrust/bomb_thrust3.png');
+    eggmanBombThrust4 = loadImage('sprites/eggman/eggman_bomb_left/bomb_thrust/bomb_thrust4.png');
 }

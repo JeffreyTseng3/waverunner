@@ -43,6 +43,10 @@
             let seekLinePos;
             let jumpLimit = 5;
             let currentJump = 0;
+            let ringScore = '0'; 
+            let enemyScore = '0';
+
+            let startScreen = true;
         
         function preload() {
           loadSprites();
@@ -80,15 +84,18 @@
           spawnShips();
           spawnPlatforms();
           spawnRings();
-          // spawnEggman();
-  
+          
+          if (parseInt(ringScore) >= 1 && parseInt(enemyScore) >= 1) {
+            spawnEggman();
+          }
+
           darkSide();
           platforms[0].displayPlatform('first');
           
           hero.move();
           hero.display();
           heroCommands();
-  
+          
           drawScore();
         }
 

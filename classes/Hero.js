@@ -31,7 +31,9 @@ class Hero {
         this.calcAverage = this.calcAverage.bind(this);
         this.checkRing = this.checkRing.bind(this);
         this.checkShip = this.checkShip.bind(this);
+        this.checkEggman = this.checkEggman.bind(this);
         this.checkOutOfBoundary = this.checkOutOfBoundary.bind(this);
+
     }
 
     move() {
@@ -39,7 +41,7 @@ class Hero {
 
             this.checkRing(this.x, this.y);
             this.checkShip(this.x, this.y);
-            
+            this.checkEggman(this.x, this.y);
         }
         this.checkGrounded(this.x, this.y + this.length);
         this.checkOutOfBoundary();
@@ -78,12 +80,12 @@ class Hero {
                 // currentJump = jumpLimit;
             } else if (inRangePlatform) { // if inrangeplatform is in line
                 // on platform
-                let inRangePlatformBoundaryY = [inRangePlatform.y, inRangePlatform.y + 30]
+                let inRangePlatformBoundaryY = [inRangePlatform.y - 12, inRangePlatform.y + 30]
                 if (heroY >= inRangePlatformBoundaryY[0] && heroY <= inRangePlatformBoundaryY[1]) {
                     // grounded if on platform
                     this.grounded = true;
                     currentJump = 0;
-                    this.y = inRangePlatform.y - 30;
+                    this.y = inRangePlatform.y - 42;
                 } else {
                     // if off the platform, then not grounded
                     this.dy += 0.7;
@@ -186,6 +188,27 @@ class Hero {
                 this.dy = -10;     
             }
         } 
+    }
+
+
+    checkEggman() {
+
+
+        if ((this.x > eggman.body1x && this.x + this.length < eggman.body1x + 120) || 
+            (this.x > eggman.body1rightx && this.x + this.length < eggman.body1rightx + 120)) {
+            console.log('TRUE');
+            if ((this.y + this.length >= eggman.body1y && this.y + this.length < eggman.body1y + 160) ||
+                (this.y + this.length >= eggman.body1righty && this.y + this.length < eggman.body1righty + 160)) {
+
+                this.y -= 30;
+                this.dy = -10;
+            }  
+        } else {
+       
+        }
+
+
+       
     }
 
 

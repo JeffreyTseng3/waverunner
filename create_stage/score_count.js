@@ -20,8 +20,11 @@ function drawScore() {
 
     let total = (ringsSum + enemySum).toString();
 
-    let ringScore = 'rings: ' + ringsSum.toString();
-    let enemyScore = 'destroyed: ' + enemySum.toString();
+    // ringScore = 'rings: ' + ringsSum.toString();
+    // enemyScore = 'destroyed: ' + enemySum.toString();
+
+    ringScore = ringsSum.toString();
+    enemyScore =  enemySum.toString();
     text(ringScore, width - 90, 100);
     text(enemyScore, width - 90, 120);
     fill(255,255,255);

@@ -27,7 +27,25 @@ function spawnRings() {
 }
 
 function spawnEggman() {
-    
-    eggman.drawEggmanBody();
-    eggman.drawThrust();
+    // parseInt(ringScore) >= 1 && 
+    if (eggman.body1x >= -150) {
+        if (eggman.body1x === -150) {
+            eggman.body1rightx = -150;
+            eggman.body1righty = hero.y;
+        }
+        eggman.drawEggmanBody();
+        eggman.moveEggman();
+        eggman.drawThrust();
+
+    } else if (eggman.body1rightx <= 1350) {
+        if (eggman.body1rightx === 1350) {
+            eggman.body1x = 1350;
+            eggman.body1y = hero.y;
+        }
+        eggman.drawEggmanBodyRight();
+        eggman.moveEggmanRight();
+        eggman.drawThrustRight();
+    }
+    // eggman.drawThrust();
+    // eggman.drawThrustRight();
 }
