@@ -1,5 +1,11 @@
 
 function keyTyped() {
+    if (key === 's') {
+        startScreen = false;
+        song.play();
+    }
+
+
     if (hero.alive) {
             if (key === ' ') {
                 if (currentJump < jumpLimit) {
@@ -38,3 +44,4 @@ function heroCommands() {
         }
     }
 }
+

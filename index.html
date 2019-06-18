@@ -45,7 +45,11 @@
             let currentJump = 0;
             let ringScore = '0'; 
             let enemyScore = '0';
-
+            let newRingXPos = 425;
+            let newShipXPos = 600; 
+            let newPlatformXPos = 250;
+            let ringsSum = 0; 
+            let enemySum = 0;
             let startScreen = true;
         
         function preload() {
@@ -53,50 +57,84 @@
           ringWav = loadSound('music_files/ring_collected.wav');
           enemyWav = loadSound('music_files/enemy_destroyed.wav');
           jumpWav = loadSound('music_files/jump_long.wav');
+          song = loadSound('music_files/escape.mp3', loaded);
+          
+
         }
 
         function setup() {
-          createCanvas(1200, 800);
-  
-          song = loadSound('music_files/escape.mp3', loaded);
           
+          createPlatforms();
+          createRings();
+          createShips();
+          createCanvas(1200, 800);
+       
+      
+          startScreen = true;
           amp = new p5.Amplitude();
           hero = new Hero();
           eggman = new Eggman();
           frameRate(30); 
-          createPlatforms();
-          createRings();
-          createShips();
         }
 
         
         function loaded() {
           console.log('loaded');
-          button = createButton('play');
-          button.mousePressed(toggle);
+          // button = createButton('play');
+          // button.mousePressed(toggle);
+        }
+
+        function restart() {
+          startScreen = true;
+          platforms = [];
+          volumeArray = [];
+          rings = [];
+          ships = [];
+          ringScore = '0';
+          enemyScore = '0'; 
+          amp = new p5.Amplitude();
+          hero = new Hero();
+          eggman = new Eggman();
+          newRingXPos = 425;
+          newShipXPos = 600
+          newPlatformXPos = 250;
+
+          createPlatforms();
+          createRings();
+          createShips();
+          createCanvas(1200, 800);
         }
 
 
         function draw() {
-          background(0);
-          drawWaves();
-          
-          spawnShips();
-          spawnPlatforms();
-          spawnRings();
-          
-          if (parseInt(ringScore) >= 1 && parseInt(enemyScore) >= 1) {
-            spawnEggman();
-          }
+          if (startScreen === true) {
+            createCanvas(1200, 800);
+            background(0);
 
-          darkSide();
-          platforms[0].displayPlatform('first');
-          
-          hero.move();
-          hero.display();
-          heroCommands();
-          
-          drawScore();
+          } else if (hero.y > 1300) {
+            restart();
+          } else {
+         
+            background(0);
+            drawWaves();
+            
+            spawnShips();
+            spawnPlatforms();
+            spawnRings();
+            
+            if (parseInt(ringScore) >= 1 && parseInt(enemyScore) >= 1) {
+              spawnEggman();
+            }
+  
+            darkSide();
+            platforms[0].displayPlatform('first');
+            
+            hero.move();
+            hero.display();
+            heroCommands();
+            
+            drawScore();
+          }
         }
 
 

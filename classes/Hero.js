@@ -161,10 +161,12 @@ class Hero {
             }
         }
 
-        if (columnRing) {
+        if (columnRing && columnRing.collected === false) {
             if (hero.y + this.length + 10 > columnRing.y && hero.y + this.length < columnRing.y + 30) {
                 columnRing.collected = true;
                 columnRing = false;
+                
+                ringsSum += 1;
             }
         } 
     }
@@ -184,6 +186,7 @@ class Hero {
 
             if (hero.y + this.length + 2 > columnShip.y && hero.y + this.length < columnShip.y + 60) {
                 columnShip.destroyed = true;
+                enemySum += 1;
                 this.y -= 30;
                 this.dy = -10;     
             }

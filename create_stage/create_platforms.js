@@ -1,5 +1,5 @@
 // this xpos allows for offscreen x coordinates
-let newPlatformXPos = 250;
+newPlatformXPos = 250;
 
 function createPlatforms() {
     for (let i = 0; i < 6; i++) {
