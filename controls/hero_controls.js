@@ -1,22 +1,30 @@
 
 function keyTyped() {
-    if (key === 's') {
-        startScreen = false;
-        song.play();
+
+    if (key === 's' && eggman.alive === false) {
+        restart();
     }
 
+    if (key === 's') {
+        if (startScreen === true) {
+            startScreen = false;
+        }
+    } else {
 
-    if (hero.alive) {
-            if (key === ' ') {
-                if (currentJump < jumpLimit) {
-                    hero.y -= 10;
-                    hero.dy = -15;
-                    currentJump += 1;
-                    jumpWav.play();
+        if (hero.alive) {
+                if (key === ' ') {
+                    if (currentJump < jumpLimit) {
+                        hero.y -= 10;
+                        hero.dy = -15;
+                        currentJump += 1;
+                        jumpWav.play();
+                    }
                 }
-            }
+        }
     }
 }
+
+
 
 function heroCommands() {
     if (hero.alive) {

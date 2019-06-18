@@ -165,7 +165,8 @@ class Hero {
             if (hero.y + this.length + 10 > columnRing.y && hero.y + this.length < columnRing.y + 30) {
                 columnRing.collected = true;
                 columnRing = false;
-                
+                ringWav.play();
+                // columnRing.musicIndex = 0;
                 ringsSum += 1;
             }
         } 
@@ -186,7 +187,10 @@ class Hero {
 
             if (hero.y + this.length + 2 > columnShip.y && hero.y + this.length < columnShip.y + 60) {
                 columnShip.destroyed = true;
+                
+                // columnShip.musicIndex = 0;
                 enemySum += 1;
+                enemyWav.play();
                 this.y -= 30;
                 this.dy = -10;     
             }
@@ -196,19 +200,24 @@ class Hero {
 
     checkEggman() {
 
-
-        if ((this.x > eggman.body1x && this.x + this.length < eggman.body1x + 120) || 
-            (this.x > eggman.body1rightx && this.x + this.length < eggman.body1rightx + 120)) {
-            console.log('TRUE');
-            if ((this.y + this.length >= eggman.body1y && this.y + this.length < eggman.body1y + 160) ||
-                (this.y + this.length >= eggman.body1righty && this.y + this.length < eggman.body1righty + 160)) {
-
-                this.y -= 30;
-                this.dy = -10;
-            }  
-        } else {
-       
+        if (eggman.hitCount === 2) {
+            eggman.alive = false;
         }
+
+        if (eggman.invul === false ) {
+            if ((this.x > eggman.body1x && this.x + this.length < eggman.body1x + 120) || 
+                (this.x > eggman.body1rightx && this.x + this.length < eggman.body1rightx + 120)) {
+         
+                if ((this.y + this.length - 5 >= eggman.body1y && this.y + this.length < eggman.body1y + 90) ||
+                    (this.y + this.length >= eggman.body1righty && this.y + this.length < eggman.body1righty + 90)) {
+                        eggman.invul = true;
+                        eggman.hitCount += 1;
+                    this.y -= 40;
+                    this.dy = -15;
+                }  
+            } 
+        }
+
 
 
        

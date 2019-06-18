@@ -67,9 +67,11 @@
           createPlatforms();
           createRings();
           createShips();
-          createCanvas(1200, 800);
+          
+
+         
        
-      
+          song.loop();
           startScreen = true;
           amp = new p5.Amplitude();
           hero = new Hero();
@@ -80,6 +82,7 @@
         
         function loaded() {
           console.log('loaded');
+          song.loop();
           // button = createButton('play');
           // button.mousePressed(toggle);
         }
@@ -102,7 +105,8 @@
           createPlatforms();
           createRings();
           createShips();
-          createCanvas(1200, 800);
+        
+
         }
 
 
@@ -111,19 +115,58 @@
             createCanvas(1200, 800);
             background(0);
 
+            rect(90, 100, 300, 200);
+            fill(0);
+            textSize(14);
+          
+            text("Press 'S' to Start", 100, 120);
+            text("Press Space Bar to Jump", 100, 140);
+            text("Max Consecutive Jumps -- 5", 100, 160);
+            text("Press Left and Right Arrow Keys to move", 100, 180);
+            text("Collect 5 Rings and Enemies to fight boss", 100, 200);
+            text("You will lose if you touch left boundary", 100, 220);
+            text("    or fall off platforms", 100, 240);
+
+
           } else if (hero.y > 1300) {
             restart();
-          } else {
+   
+          } else if (eggman.alive === false){
+ 
+            createCanvas(1200, 800);
+            background(0);
+            
+            
+            rect(90, 100, 300, 200);
+            fill(0);
+            textSize(14);
+           
+            text("You Win!", 100, 120);
+            text("Press 'S' to Start Over", 100, 140);
+            // setTimeout(() => restart(), 2000);
+            
+          }
+          
+          
+          else if(startScreen === false) {
          
             background(0);
             drawWaves();
             
-            spawnShips();
+            if (ringsSum < 5 && enemySum < 5) {
+
+              spawnShips();
+            }
+            
             spawnPlatforms();
             spawnRings();
             
-            if (parseInt(ringScore) >= 1 && parseInt(enemyScore) >= 1) {
-              spawnEggman();
+            if (eggman.alive) {
+
+              if (parseInt(ringsSum) >= 0 && parseInt(enemySum) >= 0 ) {
+              // if (parseInt(ringsSum) >= 5 && parseInt(enemySum) >= 5) {
+                spawnEggman();
+              }
             }
   
             darkSide();

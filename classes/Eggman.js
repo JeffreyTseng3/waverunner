@@ -48,6 +48,12 @@ class Eggman {
         this.thrust2Rightx = this.body1rightx - 16;
         this.thrust2Righty = this.body1righty + 35;
 
+
+        this.direction = 'left';
+
+        this.hitCount = 0;
+        this.invul = false;
+        this.alive = true;
     }
 
     drawEggmanBody() {

@@ -28,7 +28,7 @@ class Ring {
 
     playMusicRing() {
         if (this.collected === true && this.musicIndex === 0) {
-            ringWav.play();
+            // ringWav.play();
             this.musicIndex += 1;
         }
     }
