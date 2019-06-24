@@ -1,4 +1,10 @@
 function loadSprites() {
+    backgroundPhoto = loadImage('sprites/city/neon_city_scape.png');
+    startPhoto = loadImage('sprites/city/taipei.jpg');
+    endPhoto = loadImage('sprites/city/neon_city_scape.jpg');
+
+    platformImg = loadImage('sprites/platform.png');
+
     sonicStandSprite = loadImage('sprites/stand/sonic_stand.png');    
     sonicStandSpriteLeft = loadImage('sprites/stand/sonic_stand_left.png');    
 

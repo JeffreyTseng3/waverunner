@@ -2,7 +2,7 @@ function spawnPlatforms() {
 
     platforms.forEach(platform => platform.drawPlatform());
     platforms.forEach(platform => platform.movePlatform());
-    platforms.forEach(platform => platform.displayPlatform());
+    // platforms.forEach(platform => platform.displayPlatform());
     if (platforms[0].x + 100 < 0) {
         platforms = rotatePlatforms(platforms);
     }

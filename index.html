@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
+
+    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wave Runner</title>
@@ -63,11 +65,9 @@
         }
 
         function setup() {
-          
           createPlatforms();
           createRings();
           createShips();
-          
 
          
        
@@ -101,6 +101,8 @@
           newRingXPos = 425;
           newShipXPos = 600
           newPlatformXPos = 250;
+          ringsSum = 0;
+          enemySum = 0;
 
           createPlatforms();
           createRings();
@@ -114,35 +116,51 @@
           if (startScreen === true) {
             createCanvas(1200, 800);
             background(0);
+            image(startPhoto, 0, 150, 1500, 500);
 
-            rect(90, 100, 300, 200);
-            fill(0);
-            textSize(14);
-          
-            text("Press 'S' to Start", 100, 120);
-            text("Press Space Bar to Jump", 100, 140);
-            text("Max Consecutive Jumps -- 5", 100, 160);
-            text("Press Left and Right Arrow Keys to move", 100, 180);
-            text("Collect 5 Rings and Enemies to fight boss", 100, 200);
-            text("You will lose if you touch left boundary", 100, 220);
-            text("    or fall off platforms", 100, 240);
+            textSize(70);
+            text('Wave Runner', 400, 100)
+
+            
+            fill(0, 0, 0, 215);
+            rect(700, 150, 360, 500);
+           
+            fill(255);
+            let textX = 720;
+            textSize(16);
+            textStyle(BOLDITALIC);
+
+            text('Instructions', textX + 80, 180);
+            text("Press 'S' to Start", textX, 230);
+            text("Press Space Bar to Jump", textX, 280);
+            text("Max Consecutive Jumps -- 8", textX, 330);
+            text("Press Left and Right Arrow Keys to move", textX, 380);
+            text("Collect 5 Rings and Enemies to fight boss", textX, 430);
+            text("You will lose if you touch left boundary", textX, 480);
+            text("    or fall off platforms", textX, 510);
 
 
           } else if (hero.y > 1300) {
             restart();
    
           } else if (eggman.alive === false){
- 
+            
             createCanvas(1200, 800);
             background(0);
+            image(endPhoto, 0, 120, 1200, 676);
             
             
-            rect(90, 100, 300, 200);
-            fill(0);
-            textSize(14);
-           
-            text("You Win!", 100, 120);
-            text("Press 'S' to Start Over", 100, 140);
+            fill(0, 0, 0, 215);
+            rect(400, 0, 400, 800);
+            textSize(16);
+            textStyle(BOLDITALIC);
+            fill(255);
+            textSize(50);
+            
+            text("You Win!", 500, 350);
+            textSize(20);
+
+            text("Press 's' to Start Over", 500, 450);
             // setTimeout(() => restart(), 2000);
             
           }
@@ -151,26 +169,32 @@
           else if(startScreen === false) {
          
             background(0);
+            // tint(255, 127);
+            image(backgroundPhoto, 0, 0, 1800, 700);
+            // tint(255, 255);
+
             drawWaves();
             
-            if (ringsSum < 5 && enemySum < 5) {
-
+            // if (ringsSum < 10 && enemySum < 10) {
               spawnShips();
-            }
+            // }
             
             spawnPlatforms();
             spawnRings();
             
-            if (eggman.alive) {
-
-              if (parseInt(ringsSum) >= 0 && parseInt(enemySum) >= 0 ) {
-              // if (parseInt(ringsSum) >= 5 && parseInt(enemySum) >= 5) {
-                spawnEggman();
-              }
-            }
-  
             darkSide();
             platforms[0].displayPlatform('first');
+
+              if (eggman.alive) {
+                if (parseInt(ringsSum) >= 8 && parseInt(enemySum) >= 8 ) {
+                // if (parseInt(ringsSum) >= 5 && parseInt(enemySum) >= 5) {
+                  spawnEggman();
+                }
+              }
+         
+
+
+            
             
             hero.move();
             hero.display();

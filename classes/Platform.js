@@ -4,14 +4,17 @@ class Platform {
         this.y = y;
         this.dx = 3;
         this.fr = fr;
+        
     }
 
     
     // sets up each platform without form or shape
     drawPlatform() {
-        stroke(0);
-        strokeWeight(1);
-        rect(this.x, this.y, 100, 20);
+        // stroke(0);
+        // strokeWeight(1);
+        // rect(this.x, this.y, 100, 20);
+        image(platformImg, this.x, this.y, 100, 20);
+        
     }
 
     // moves platform only when seek line is set, and when song is playing
@@ -55,7 +58,6 @@ class Platform {
                 wide = 100;
             }
             rect(this.x, this.y, wide, 20);
-
         }
     }
 

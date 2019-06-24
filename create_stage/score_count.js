@@ -26,6 +26,8 @@ function drawScore() {
     // ringScore = ringsSum.toString();
     // enemyScore =  enemySum.toString();
     
+    fill(255);
+    textStyle(NORMAL);
     ringScore = 'Rings: ' + ringsSum.toString();
     enemyScore = 'Enemies: ' +  enemySum.toString();
     text(ringScore, width - 90, 100);

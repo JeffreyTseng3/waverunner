@@ -200,7 +200,7 @@ class Hero {
 
     checkEggman() {
 
-        if (eggman.hitCount === 2) {
+        if (eggman.hitCount === 4) {
             eggman.alive = false;
         }
 
@@ -208,8 +208,8 @@ class Hero {
             if ((this.x > eggman.body1x && this.x + this.length < eggman.body1x + 120) || 
                 (this.x > eggman.body1rightx && this.x + this.length < eggman.body1rightx + 120)) {
          
-                if ((this.y + this.length - 5 >= eggman.body1y && this.y + this.length < eggman.body1y + 90) ||
-                    (this.y + this.length >= eggman.body1righty && this.y + this.length < eggman.body1righty + 90)) {
+                if ((this.y + this.length >= eggman.body1y && this.y + this.length < eggman.body1y + 60) ||
+                    (this.y + this.length >= eggman.body1righty && this.y + this.length < eggman.body1righty + 660)) {
                         eggman.invul = true;
                         eggman.hitCount += 1;
                     this.y -= 40;
