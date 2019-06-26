@@ -4,7 +4,7 @@ function toggle() {
     let vol = amp.getLevel();
     console.log(vol);
     if (vol > 0.15) {
-        // button.html('unmute');
+        button.html('unmute');
         song.setVolume(0.0);
         ringWav.setVolume(0.0);
         enemyWav.setVolume(0.0);
@@ -13,7 +13,7 @@ function toggle() {
     } else {
         
         
-        // button.html('mute');
+        button.html('mute');
         song.setVolume(1.0);
         ringWav.setVolume(1.0);
         enemyWav.setVolume(1.0);
