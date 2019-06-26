@@ -36,13 +36,13 @@ function keyTyped(e) {
     } else {
 
         if (hero.alive) {
-                if (key === ' ' ) {
+                if (key === 'z' ) {
                     if (currentJump < jumpLimit) {
                         hero.y -= 10;
                         hero.dy = -15;
                         currentJump += 1;
                         jumpWav.play();
-                        // e.preventDefault();
+                        e.preventDefault();
                         return false;
                     }
                 }

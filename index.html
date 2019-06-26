@@ -95,7 +95,8 @@
           song.loop();
           button = createButton('mute');
           button.mousePressed(toggle);
-         
+         button.style('background-color', col);
+         var col = color(25, 23, 200, 50);
           button.position(900, 750);
         }
 
@@ -146,7 +147,7 @@
             text('Instructions', textX + 80, textY);
             text("Press 'm' to mute", textX, textY + 50);
             text("Press 's' to Start", textX, textY + 100);
-            text("Press Space Bar to Jump", textX, textY + 150);
+            text("Press 'z' to Jump", textX, textY + 150);
             text("Max Consecutive Jumps -- 5", textX, textY + 200);
             text("Press Left and Right Arrow Keys to move", textX, textY + 250);
             text("Collect 8 Rings and Enemies to fight boss", textX, textY + 300);

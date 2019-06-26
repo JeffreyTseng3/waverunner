@@ -9,7 +9,7 @@ function toggle() {
         ringWav.setVolume(0.0);
         enemyWav.setVolume(0.0);
         jumpWav.setVolume(0.0);
-        return false;
+      
     } else {
         
         
@@ -18,7 +18,7 @@ function toggle() {
         ringWav.setVolume(1.0);
         enemyWav.setVolume(1.0);
         jumpWav.setVolume(1.0);
-        return false;
+        
     }
 
 }
