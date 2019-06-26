@@ -2,7 +2,7 @@
 function keyTyped(e) {
     if (key === 'm') {
         let vol = amp.getLevel();
-        console.log(vol);
+        // console.log(vol);
         if (vol > 0.15) {
             // button.html('unmute');
             song.setVolume(0.0);
