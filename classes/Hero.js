@@ -200,7 +200,7 @@ class Hero {
 
     checkEggman() {
 
-        if (eggman.hitCount === 4) {
+        if (eggman.hitCount === 3) {
             eggman.alive = false;
         }
 
