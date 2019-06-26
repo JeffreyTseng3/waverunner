@@ -11,9 +11,6 @@ function Sound(x,y) {
         image(this.soundOn, 100, 100, 200, 200);
     }
 
-    this.clicked = (e) =>  {
-      
-        console.log('clicked');
-    }
+ 
 
 }

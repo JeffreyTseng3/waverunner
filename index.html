@@ -91,13 +91,15 @@
 
         
         function loaded() {
-          console.log('loaded');
+          // console.log('loaded');
           song.loop();
           button = createButton('mute');
           button.mousePressed(toggle);
-         button.style('background-color', col);
-         var col = color(25, 23, 200, 50);
-          button.position(900, 750);
+          button.size(50, 25);
+          button.style("font-family", "Calibri");
+          button.style("background-color", "#2471A3");
+          button.style("color", "#fff");
+         button.position(1190, 800);
         }
 
         function restart() {
@@ -144,8 +146,8 @@
             textStyle(BOLDITALIC);
 
             let textY = 180;
-            text('Instructions', textX + 80, textY);
-            text("Press 'm' to mute", textX, textY + 50);
+            text('Instructions', textX + 80, textY + 50);
+            
             text("Press 's' to Start", textX, textY + 100);
             text("Press 'z' to Jump", textX, textY + 150);
             text("Max Consecutive Jumps -- 5", textX, textY + 200);
