@@ -3,6 +3,9 @@ function loadSprites() {
     startPhoto = loadImage('sprites/city/taipei.jpg');
     endPhoto = loadImage('sprites/city/neon_city_scape.jpg');
 
+    soundOn= loadImage('sprites/sound-playing.png')
+    soundOff = loadImage('sprites/sound-muted.png')
+
     platformImg = loadImage('sprites/platform.png');
 
     sonicStandSprite = loadImage('sprites/stand/sonic_stand.png');    

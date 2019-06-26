@@ -1,5 +1,29 @@
 
-function keyTyped() {
+function keyTyped(e) {
+    if (key === 'm') {
+        let vol = amp.getLevel();
+        console.log(vol);
+        if (vol > 0.15) {
+            // button.html('unmute');
+            song.setVolume(0.0);
+            ringWav.setVolume(0.0);
+            enemyWav.setVolume(0.0);
+            jumpWav.setVolume(0.0);
+            return false;
+        } else {
+
+
+            // button.html('mute');
+            song.setVolume(1.0);
+            ringWav.setVolume(1.0);
+            enemyWav.setVolume(1.0);
+            jumpWav.setVolume(1.0);
+            return false;
+        }
+    }
+
+
+
 
     if (key === 's' && eggman.alive === false) {
         restart();
@@ -12,17 +36,21 @@ function keyTyped() {
     } else {
 
         if (hero.alive) {
-                if (key === ' ') {
+                if (key === ' ' ) {
                     if (currentJump < jumpLimit) {
                         hero.y -= 10;
                         hero.dy = -15;
                         currentJump += 1;
                         jumpWav.play();
+                        // e.preventDefault();
+                        return false;
                     }
                 }
         }
     }
+    return false;
 }
+
 
 
 
@@ -51,5 +79,6 @@ function heroCommands() {
             hero.y += 5;
         }
     }
+    return false;
 }
 

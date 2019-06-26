@@ -28,10 +28,13 @@ function drawScore() {
     
     fill(255);
     textStyle(NORMAL);
+    
     ringScore = 'Rings: ' + ringsSum.toString();
     enemyScore = 'Enemies: ' +  enemySum.toString();
     text(ringScore, width - 90, 100);
     text(enemyScore, width - 90, 120);
+
+    // text("Press 'm' to mute", width - 120, 0);
     fill(255,255,255);
     textSize(14);
 }

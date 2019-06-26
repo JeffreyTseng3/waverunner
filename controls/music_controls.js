@@ -1,15 +1,24 @@
 
 
 function toggle() {
-    if (!song.isPlaying()) {
-        song.play();
-        song.setVolume(0.7);
-        ringWav.setVolume(1);
-        enemyWav.setVolume(1);
-        button.html('pause');
+    let vol = amp.getLevel();
+    console.log(vol);
+    if (vol > 0.15) {
+        // button.html('unmute');
+        song.setVolume(0.0);
+        ringWav.setVolume(0.0);
+        enemyWav.setVolume(0.0);
+        jumpWav.setVolume(0.0);
+        return false;
     } else {
-        song.pause();
-        button.html('play');
+        
+        
+        // button.html('mute');
+        song.setVolume(1.0);
+        ringWav.setVolume(1.0);
+        enemyWav.setVolume(1.0);
+        jumpWav.setVolume(1.0);
+        return false;
     }
 
 }

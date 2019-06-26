@@ -1,6 +1,7 @@
 
 function drawWaves() {
   let vol = amp.getLevel();
+
   volumeArray.push(vol);
   waveYArray.push(map(vol, 0, 1,height * 0.9, 0)); // adjust third value to affect height death.
 
