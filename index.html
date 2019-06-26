@@ -44,7 +44,7 @@
             let truck;
             let wavesArray;
             let seekLinePos;
-            let jumpLimit = 4;
+            let jumpLimit = 6;
             let currentJump = 0;
             let ringScore = '0'; 
             let enemyScore = '0';
@@ -203,7 +203,7 @@
               // platforms[0].displayPlatform('first');
               
               if (eggman.alive) {
-                if (parseInt(ringsSum) >= 8 && parseInt(enemySum) >= 8 ) {
+                if (parseInt(ringsSum) >= 3 && parseInt(enemySum) >= 3 ) {
                   // if (parseInt(ringsSum) >= 5 && parseInt(enemySum) >= 5) {
                     spawnEggman();
                   }
