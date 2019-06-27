@@ -36,7 +36,7 @@ function keyTyped(e) {
     } else {
 
         if (hero.alive) {
-                if (key === 'z' ) {
+                if (key === ' ' ) {
                     if (currentJump < jumpLimit) {
                         hero.y -= 10;
                         hero.dy = -15;
