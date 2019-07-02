@@ -5,6 +5,12 @@
 
 A side-scrolling platform game that renders audio waveforms and obstacles for the user to bypass
 
+
+[![Game Sample](https://github.com/JeffreyTseng3/waverunner/blob/master/README_images/waverunner_screenshot.png?raw=true)]
+
+
+
+
 ## Coding Languages and Tools
 + Javascript 
 + p5
