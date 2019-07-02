@@ -3,10 +3,12 @@
 # Wave Runner
 
 
-A side-scrolling platform game that renders audio waveforms and obstacles for the user to bypass
+A side-scrolling platform game that renders audio waveforms and obstacles for the user to bypass.
+If the player collects up to a number of coins and destroys a number of enemies, then Dr. Eggman, the boss, will appear. 
 
 
-[![Game Sample](https://github.com/JeffreyTseng3/waverunner/blob/master/README_images/waverunner_screenshot.png?raw=true)]
+The below is a screenshot of what the game looks like. 
+![Game Sample](https://github.com/JeffreyTseng3/waverunner/blob/master/README_images/waverunner_screenshot.png?raw=true)
 
 
 
